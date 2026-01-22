@@ -9,6 +9,7 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/rgb.h>
 #include <dt-bindings/zmk/ext_power.h>
+#include <dt-bindings/zmk/pointing.h>
 
 #define BASE 0
 #define LOWER 1
@@ -23,6 +24,14 @@
     adjust_layer {
       if-layers = <LOWER RAISE>;
       then-layer = <ADJUST>;
+    };
+  };
+
+  behaviors {
+    rot_msc: sensor_rotate_msc {
+        compatible = "zmk,behavior-sensor-rotate-var";
+        #sensor-binding-cells = <2>;
+        bindings = <&msc>, <&msc>;
     };
   };
 
@@ -45,7 +54,7 @@
                               &kp LCTRL   &kp LALT    &kp LGUI    &kp LSHFT &kp SPACE  &kp RET    &kp RALT  &kp RCTRL    &mo RAISE    &mo LOWER
       >;
 
-      sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp C_PREV C_NEXT>;
+      sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &rot_msc SCRL_DOWN SCRL_UP>;
     };
 
     lower_layer {
