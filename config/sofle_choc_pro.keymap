@@ -29,9 +29,9 @@
 
   behaviors {
     rot_msc: sensor_rotate_msc {
-        compatible = "zmk,behavior-sensor-rotate-var";
-        #sensor-binding-cells = <2>;
-        bindings = <&msc>, <&msc>;
+        compatible = "zmk,behavior-sensor-rotate";
+        #sensor-binding-cells = <0>;
+        bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
         tap-ms = <40>;
     };
   };
@@ -55,7 +55,7 @@
                               &kp LCTRL   &kp LALT    &kp LGUI    &kp LSHFT &kp SPACE  &kp RET    &kp RALT  &kp RCTRL    &mo RAISE    &mo LOWER
       >;
 
-      sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &rot_msc SCRL_DOWN &rot_msc SCRL_UP>;
+      sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &rot_msc>;
     };
 
     lower_layer {
